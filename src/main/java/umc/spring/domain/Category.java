@@ -21,9 +21,9 @@ public class Category extends BaseEntity {
     @Column(nullable = false, length = 40)
     private String name;
 
-    @Builder.Default
-    @OneToMany(mappedBy = "category", cascade = CascadeType.ALL)
-    private List<User> userList = new ArrayList<>();
+//    @Builder.Default
+//    @OneToMany(mappedBy = "category", cascade = CascadeType.ALL)
+//    private List<User> userList = new ArrayList<>();
 
     @Builder.Default
     @OneToMany(mappedBy = "category", cascade = CascadeType.ALL)

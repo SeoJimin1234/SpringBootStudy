@@ -4,8 +4,9 @@ import jakarta.persistence.*;
 import lombok.*;
 import umc.spring.domain.common.BaseEntity;
 import umc.spring.domain.enums.Gender;
-import umc.spring.domain.enums.MemberStatus;
+import umc.spring.domain.enums.UserStatus;
 import umc.spring.domain.mapping.UserMission;
+import umc.spring.domain.mapping.UserPrefer;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -31,7 +32,7 @@ public class User extends BaseEntity {
 
     @Enumerated(EnumType.STRING)
     @Column(columnDefinition = "VARCHAR(15) DEFAULT 'ACTIVE'")
-    private MemberStatus status;
+    private UserStatus status;
 
     @Column(nullable = false, length = 40)
     private String address;
@@ -48,9 +49,13 @@ public class User extends BaseEntity {
 
     private LocalDate inactiveAt;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="category_id")
-    private Category category;
+//    @ManyToOne(fetch = FetchType.LAZY)
+//    @JoinColumn(name="category_id")
+//    private Category category;
+
+    @Builder.Default
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private List<UserPrefer> userPreferList = new ArrayList<>();
 
     @Builder.Default
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
