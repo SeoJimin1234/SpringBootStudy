@@ -36,6 +36,8 @@ public class UserConverter {
                 .gender(gender)
                 .name(request.getName())
                 .userPreferList(new ArrayList<>())
+                .phone(request.getPhone())
+                .email(request.getEmail())
                 .build();
     }
 }

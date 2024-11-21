@@ -2,7 +2,7 @@ package umc.spring.domain.mapping;
 
 import jakarta.persistence.*;
 import lombok.*;
-import umc.spring.domain.Category;
+import umc.spring.domain.FoodCategory;
 import umc.spring.domain.User;
 import umc.spring.domain.common.BaseEntity;
 
@@ -22,5 +22,16 @@ public class UserPrefer extends BaseEntity {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "category_id")
-    private Category category;
+    private FoodCategory foodCategory;
+
+    public void setUser(User user) {
+        if(this.user !=null)
+            user.getUserPreferList().remove(this);
+        this.user = user;
+        user.getUserPreferList().add(this);
+    }
+
+    public void setFoodCategory(FoodCategory foodCategory) {
+        this.foodCategory = foodCategory;
+    }
 }
