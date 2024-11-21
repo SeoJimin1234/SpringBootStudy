@@ -12,7 +12,7 @@ import java.util.List;
 @Builder
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
-public class Category extends BaseEntity {
+public class FoodCategory extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,11 +21,11 @@ public class Category extends BaseEntity {
     @Column(nullable = false, length = 40)
     private String name;
 
-    @Builder.Default
-    @OneToMany(mappedBy = "category", cascade = CascadeType.ALL)
-    private List<User> userList = new ArrayList<>();
+//    @Builder.Default
+//    @OneToMany(mappedBy = "category", cascade = CascadeType.ALL)
+//    private List<User> userList = new ArrayList<>();
 
     @Builder.Default
-    @OneToMany(mappedBy = "category", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "foodCategory", cascade = CascadeType.ALL)
     private List<Store> storeList = new ArrayList<>();
 }
