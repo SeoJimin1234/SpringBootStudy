@@ -3,7 +3,7 @@
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/UMC7th
+    url: jdbc:mysql://localhost:3306/umc_spring
     username: root
     password: Tjwla5525!
   sql:
